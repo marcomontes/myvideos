@@ -1,0 +1,28 @@
+.alert.alert-warning
+  .text-center
+    %strong= videos_title(@query)
+
+- if @videos.present?
+  - @videos.in_groups_of(4) do |videos|
+    .row
+      - videos.each do |video|
+        - if video.present?
+          .col-md-3
+            .thumbnail
+              %img{:alt => video[:title], :src => video[:thumbnail]}
+              .caption
+                %p= video[:title]
+                .text-center
+                  %button.btn.btn-primary{"data-target": "#videoModal", "data-toggle": "modal", "data-video-id": video[:id], "data-video-title": video[:title], type: "button"} 
+                    VER VIDEO
+
+#videoModal.modal.fade{"aria-labelledby": "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label": "Close", "data-dismiss": "modal", type: "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title
+      .modal-body
+        %input#video-id{type: "hidden"}
+        %iframe{width: "560", height: "315", src: "", frameborder: "0", allowfullscreen: true, class: "video-iframe"}
