@@ -20,11 +20,6 @@ class YoutubeAdapter
   end
 
   def self.search(term)
-    opts = Trollop::options do
-      opt :q, 'Search term', :type => String, :default => term
-      opt :max_results, 'Max results', :type => :int, :default => 20
-    end
-
     client, youtube = get_service
 
     begin
@@ -32,8 +27,8 @@ class YoutubeAdapter
         :api_method => youtube.search.list,
         :parameters => {
           :part => 'snippet',
-          :q => opts[:q],
-          :maxResults => opts[:max_results]
+          :q => term,
+          :maxResults => 20
         }
       )
 
