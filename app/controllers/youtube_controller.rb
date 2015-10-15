@@ -13,7 +13,9 @@ class YoutubeController < ApplicationController
     end
 
     def check_session
-      redirect_to new_person_session_path if !current_person
+      if !current_person && !current_user
+        redirect_to new_person_session_path
+      end
     end
 
 end
