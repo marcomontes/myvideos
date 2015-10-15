@@ -1,0 +1,4 @@
+- if user_signed_in? || current_person
+  %li= link_to 'INICIO', root_path
+- else
+  %li= link_to 'INICIAR SESION', new_person_session_path

@@ -8,9 +8,6 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    /= render 'layouts/navigation'
-    /= render 'layouts/messages'
-              
     .container
       %nav.navbar.navbar-default
         .container-fluid
@@ -19,7 +16,7 @@
           #navbar.navbar-collapse.collapse
             %ul.nav.navbar-nav
               %li.active
-                %a{:href => "#"} Perfil
+                = render 'layouts/navigation_links'
               %li
                 = form_tag youtube_index_path, method: :get, class: "navbar-form navbar-left", role: "search" do
                   .form-group
@@ -28,8 +25,9 @@
                     Buscar
             %ul.nav.navbar-nav.navbar-right
               %li
-                %a{:href => "#"} Salir
+                = link_to "CERRAR SESION", destroy_person_session_path, method: :delete
 
       .container
+        = render 'layouts/messages'
         = yield
           

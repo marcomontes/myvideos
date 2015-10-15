@@ -18,7 +18,7 @@ gem 'unicorn'
 gem 'unicorn-rails'
 gem 'google-api-client', require: 'google/api_client'
 gem 'trollop'
-
+gem 'devise'
 
 group :development do
   gem 'web-console', '~> 2.0'

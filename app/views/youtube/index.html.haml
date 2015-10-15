@@ -1,4 +1,4 @@
-.alert.alert-warning
+.alert.alert-info
   .text-center
     %strong= videos_title(@query)
 
@@ -13,7 +13,7 @@
               .caption
                 %p= video[:title]
                 .text-center
-                  %button.btn.btn-primary{"data-target": "#videoModal", "data-toggle": "modal", "data-video-id": video[:id], "data-video-title": video[:title], type: "button"} 
+                  %button.btn.btn-success{"data-target": "#videoModal", "data-toggle": "modal", "data-video-id": video[:id], "data-video-title": video[:title], type: "button"} 
                     VER VIDEO
 
 #videoModal.modal.fade{"aria-labelledby": "myModalLabel", role: "dialog", tabindex: "-1"}
