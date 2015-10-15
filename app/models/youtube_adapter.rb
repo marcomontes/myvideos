@@ -19,8 +19,10 @@ class YoutubeAdapter
     return client, youtube
   end
 
-  def self.search(term)
+  def self.search(term, order)
     client, youtube = get_service
+
+    order = "relevance" if order.blank?
 
     begin
       search_response = client.execute!(
@@ -28,7 +30,8 @@ class YoutubeAdapter
         :parameters => {
           :part => 'snippet',
           :q => term,
-          :maxResults => 20
+          :maxResults => 20,
+          :order => order
         }
       )
 

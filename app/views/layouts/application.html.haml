@@ -23,6 +23,8 @@
                     = text_field_tag 'q', nil, class: "form-control"
                   %button.btn.btn-default{:type => "submit"}
                     Buscar
+              %li
+                = link_to 'ORDENAR POR NUMERO DE VISUALIZACIONES', youtube_index_path(q: @query, order: 'viewCount')
             %ul.nav.navbar-nav.navbar-right
               %li
                 /= link_to "CERRAR SESION", destroy_person_session_path, method: :delete

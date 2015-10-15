@@ -9,7 +9,8 @@ class YoutubeController < ApplicationController
 
     def videos
       @query = params[:q]
-      @videos = YoutubeAdapter.search(@query)
+      order = params[:order]
+      @videos = YoutubeAdapter.search(@query, order)
     end
 
     def check_session
